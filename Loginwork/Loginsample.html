@@ -1,0 +1,226 @@
+<!-- Abhai Sankar P R -->
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">    
+    <title>Login Page with drop down</title> 
+    <link rel="icon" href="5a5f5ecc1d997a83dd7b4fe2f4cbc29e.jpg">
+    </head>
+    <body class="body">
+        <div class="box">
+            <form class="loginform" target="_top" onsubmit="return validate()">
+                <h3 id="loginhere">Login here</h3>
+                <label for="options">Choose a option:</label>
+                <select name="options" id="options">
+                    <option value="ktu">KTU</option>
+                    <option value="stm">St.Mary's</option>
+                    <option value="Sct">SCT</option>
+                    <option value="BMS">Book My Show</option>
+                    <option value="etlab">EtLab</option>
+                    <option>others</option>
+                </select>
+                <div class="containerinput">
+                <label for="username">UserName<span class="must">*</span>:</label>
+                <input id="username" type="text" placeholder="Enter username:" required><br>
+                <label for="password">Password<span class="must">*</span>:</label>
+                <input id="password" type="password" placeholder="Enter password:" required>
+                 </div>
+                <input type="checkbox" id="showpass" onclick="togglePassword()">
+                <label for="showpass">show password</label><br>
+                <button type="submit" class="submit">Login</button>
+            </form>
+            <button class="mode" onclick="modechange()">DARK</button>
+        </div>
+    </body>
+    <style>
+        .must{
+            color:red;
+        }
+        #options{
+            border-radius: 5px;
+            box-shadow: 2px 2px 10px black;
+            transition: 1s;
+            color: blue;
+        }
+        #options:hover{
+            border-radius: 10px;
+            color: rgb(41, 41, 41);
+            background-color: #bec4bb;
+        }
+        #username{
+            border-radius: 5px;
+            margin-bottom: 5px;
+            border-style:none;
+            box-shadow: 3px 2px 6px black;
+        }
+        #password{
+            border-radius: 5px;
+            margin-top: 2px;
+            border-style:none;
+            box-shadow: 3px 2px 6px black;
+        }
+        #showpass{
+            text-align: center;
+            box-shadow: 3px 2px 6px lightblue;
+            border-style:none;
+        }
+        .box{
+            border-radius: 15px;
+            border-style: groove;
+            height: 275px;
+            width:280px;
+            border-color: transparent;
+            position: absolute;
+            padding: 10px;
+            padding-top: 1px;
+            box-shadow: 4px 4px  20px #3b6bc4;
+            background:#d1afae;
+           
+        }
+        #loginhere{
+            text-align: center;
+            color:#406094;
+            text-decoration:underline;
+            font-size:20px;
+            font-family: 'Times New Roman', sans-serif;
+        }
+        .mode{
+            size:5px;
+            margin: 8px auto;
+            cursor:pointer;
+            text-align:right;
+            position:fixed;
+            bottom:8px;
+            right:8px;
+            color:white;
+            background-color:black;
+            border-radius:5px;
+            box-shadow:5px 5px 50px white;
+            border-style:inset;
+            padding-top:5px;
+        }
+        .containerinput{
+            display:flex;
+            flex-direction:column;
+            margin-top: 10px;
+        }
+        .containerinput input{
+            background:#e7e6f7;
+            height: 26px;
+            width:270px;
+        }
+        .containerinput label{
+            font-family:'Times New Roman', sans-serif;
+            font-size:14px;
+        }
+        .details{
+            color:white;
+            font-size:8px;
+            margin-top:30px;
+            text-align:right;
+        }
+        .body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('pexels-pixabay-531880.jpg');
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        .submit{
+            margin:20px auto;
+            display:block;
+            box-shadow: 1px 1px 6px black;
+            border-style:double;
+            border-radius:5px;
+            transition:1s;
+        }
+        .submit:hover{
+            width: 60px;
+            padding-right: 6px;
+            color:red;
+        }
+    </style>
+<script>
+    function togglePassword() {
+        var passwordField = document.getElementById('password');
+        var showPassCheckbox = document.getElementById('showpass');
+        if (showPassCheckbox.checked) {
+            passwordField.type = 'text';
+        } else {
+            passwordField.type = 'password';
+        }
+    }
+    function validate(){
+        const validCredentials = {
+        'COLLEGE': 'sct',
+        'SCHOOL': 'stmarys'
+        };
+      let user=document.getElementById("username").value;
+      let pass=document.getElementById("password").value;
+      let option=document.getElementById("options").value;
+      if(validCredentials[user]===pass){
+       if(option==='ktu'){
+             window.location.href='https://app.ktu.edu.in/login.htm';
+       }
+       else if(option==='stm'){
+             window.location.href='http://www.stmrcstvm.com/';
+       }
+       else if(option==='Sct'){
+             window.location.href='https://www.sctce.ac.in/';
+       }
+       else if(option==='BMS'){
+             window.location.href='https://in.bookmyshow.com/explore/home/trivandrum';            
+       }
+       else if(option==='etlab'){
+            window.location.href='https://sctce.etlab.in/user/login';
+       }
+        else {
+             window.location.href='https://www.ktuqbank.com/2020/07/computer-science-engineering-year-2_20.html?m=1';}
+       return false;
+      }
+      else{
+       alert('Invalid username or password');
+       return false;
+      }
+    }
+    function modechange(){
+        let mode=document.getElementsByClassName("mode")[0];
+        let back=document.getElementsByClassName("box")[0];
+        let button=document.getElementsByClassName("mode")[0];
+        if(mode.innerText==='DARK'){
+            back.style.backgroundColor='#151d29';
+        mode.innerText='LIGHT';
+        back.style.color='white';
+        button.style.backgroundColor='white';
+        button.style.color='black';
+        localStorage.setItem('mode', 'dark');
+        }
+        else{
+        back.style.backgroundColor='';
+        mode.innerText='DARK';
+        back.style.color='';
+        button.style.color='';
+        button.style.backgroundColor='';
+        localStorage.setItem('mode', 'light');
+        }
+}
+window.onload = function() {
+    const savedMode = localStorage.getItem('mode');
+    const modeButton = document.getElementsByClassName("mode")[0];
+    const box = document.getElementsByClassName("box")[0];
+
+    if (savedMode === 'dark') {
+        box.style.backgroundColor = '#151d29';
+        modeButton.innerText = 'LIGHT';
+        box.style.color = 'white';
+        modeButton.style.backgroundColor = 'white';
+        modeButton.style.color = 'black';
+    }
+};
+</script>
+</html>
